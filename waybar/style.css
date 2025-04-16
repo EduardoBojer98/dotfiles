@@ -1,21 +1,15 @@
 * {
 	font-family: "JetBrainsMono Nerd Font", monospace;
 	font-size: 14px;
-	color: #c0caf5; /* Tokyo Night foreground */
+	color: #c0caf5;
 	border: none;
 	border-radius: 0;
 	box-shadow: none;
 }
 
 #waybar {
-	background: rgba(
-		26,
-		27,
-		38,
-		0.85
-	); /* Semi-transparent Tokyo Night background */
+	background: rgba(26, 27, 38, 0.85);
 	border-radius: 12px;
-	margin: 10px;
 	padding: 10px 16px;
 	border: 1px solid rgba(108, 112, 134, 0.2);
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -57,7 +51,7 @@
 #custom-windows,
 #custom-wofi,
 #custom-separator {
-	margin: 0 8px;
+	margin: 0 15px;
 }
 
 #custom-separator {

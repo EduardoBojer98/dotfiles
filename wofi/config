@@ -1,3 +1,12 @@
+[settings]
 show=drun
-style=/home/eduardo/.config/wofi/style.css
 term=foot
+
+# Icon size (adjust to your preference)
+icon-size=32
+
+# Icon theme
+icon-theme=Papirus
+
+# Additional settings for better icon handling
+disable-history=true

@@ -4,46 +4,31 @@
   "mode": "dock",
   "margin-right": 10,
   "margin-left": 10,
-  "margin-bottom": 10,
+  "margin-top": 10,
   "modules-left": [
     "custom/wofi",
-    "custom/separator",
     "hyprland/workspaces",
-    "custom/separator",
     "hyprland/window"
   ],
   "modules-center": [
     "clock",
-    "custom/separator",
-    "custom/windows",
-    "custom/separator",
-    "custom/date"
+    "custom/weather"
   ],
   "modules-right": [
     "tray",
-    "custom/separator",
-    "network",
-    "custom/separator",
-    "pulseaudio",
-    "custom/separator",
-    "battery",
-    "custom/separator",
     "custom/temps",
-    "custom/separator",
-    "custom/cpu",
-    "custom/separator",
-    "custom/memory",
-    "custom/separator",
-    "custom/disk",
-    "custom/separator",
-    "custom/weather"
+    "network",
+    "pulseaudio",
+    "custom/brightness",
+    "battery"
   ],
   "clock": {
     "format": " {:%H:%M  %d %b}"
   },
   "pulseaudio": {
-    "format": " {volume}%",
-    "tooltip": "Audio Volume"
+    "format": "  {volume}%",
+    "tooltip": "Audio Volume",
+    "on-click": "pavucontrol"
   },
   "battery": {
     "format": " {capacity}%",
@@ -57,9 +42,10 @@
     "tooltip": "Battery Level"
   },
   "network": {
-    "format-wifi": " {essid}",
+    "format-wifi": "  {essid}",
     "format-ethernet": "󰈀 {ifname}",
-    "tooltip": "Network Status"
+    "tooltip": "Network Status",
+    "on-click": "nm-applet"
   },
   "custom/windows": {
     "exec": "~/.dotfiles/waybar/scripts/windows.sh",
@@ -69,7 +55,8 @@
   "custom/temps": {
     "exec": "~/.dotfiles/waybar/scripts/temps.sh",
     "interval": 5,
-    "format": " {}"
+    "format": " {}",
+    "on-click": "rog-control-center"
   },
   "custom/wofi": {
     "format": "",
@@ -86,7 +73,8 @@
     "exec": "~/.dotfiles/waybar/scripts/cpu.sh",
     "tooltip": "CPU Usage",
     "interval": 5,
-    "format": " {}"
+    "format": " {}",
+    "on-click": "rog-control-center"
   },
   "custom/memory": {
     "exec": "~/.dotfiles/waybar/scripts/memory.sh",
@@ -104,6 +92,16 @@
     "exec": "~/.dotfiles/waybar/scripts/weather.sh",
     "tooltip": "Weather Forecast",
     "interval": 1800,
+    "format": "{}"
+  },
+  "custom/brightness": {
+    "exec": "~/.dotfiles/waybar/scripts/brightness.sh",
+    "interval": 2,
+    "tooltip": "Screen Brightness",
+    "on-click": "brightnessctl set +10%",
+    "on-click-right": "brightnessctl set 10%-",
+    "on-scroll-up": "~/.dotfiles/waybar/scripts/brightness-adjust.sh up",
+    "on-scroll-down": "~/.dotfiles/waybar/scripts/brightness-adjust.sh down",
     "format": "{}"
   },
   "custom/separator": {
