@@ -1,53 +1,113 @@
 {
   "layer": "top",
   "position": "top",
+  "mode": "dock",
+  "margin-right": 10,
+  "margin-left": 10,
+  "margin-bottom": 10,
   "modules-left": [
     "custom/wofi",
+    "custom/separator",
     "hyprland/workspaces",
+    "custom/separator",
     "hyprland/window"
   ],
   "modules-center": [
     "clock",
-    "custom/windows"
+    "custom/separator",
+    "custom/windows",
+    "custom/separator",
+    "custom/date"
   ],
   "modules-right": [
     "tray",
+    "custom/separator",
     "network",
+    "custom/separator",
     "pulseaudio",
+    "custom/separator",
     "battery",
-    "custom/temps"
+    "custom/separator",
+    "custom/temps",
+    "custom/separator",
+    "custom/cpu",
+    "custom/separator",
+    "custom/memory",
+    "custom/separator",
+    "custom/disk",
+    "custom/separator",
+    "custom/weather"
   ],
   "clock": {
-    "format": "  {:%H:%M  %d %b}"
+    "format": " {:%H:%M  %d %b}"
   },
   "pulseaudio": {
-    "format": "  {volume}%"
+    "format": " {volume}%",
+    "tooltip": "Audio Volume"
   },
   "battery": {
-    "format": "{icon} {capacity}%",
+    "format": " {capacity}%",
     "format-icons": [
       "",
       "",
       "",
       "",
       ""
-    ]
+    ],
+    "tooltip": "Battery Level"
   },
   "network": {
-    "format-wifi": "  {essid}",
-    "format-ethernet": "󰈀  {ifname}"
+    "format-wifi": " {essid}",
+    "format-ethernet": "󰈀 {ifname}",
+    "tooltip": "Network Status"
   },
   "custom/windows": {
-    "exec": "~/.config/waybar/scripts/windows.sh",
-    "interval": 2
+    "exec": "~/.dotfiles/waybar/scripts/windows.sh",
+    "interval": 2,
+    "format": " {}"
   },
   "custom/temps": {
-    "exec": "~/.config/waybar/scripts/temps.sh",
-    "interval": 5
+    "exec": "~/.dotfiles/waybar/scripts/temps.sh",
+    "interval": 5,
+    "format": " {}"
   },
   "custom/wofi": {
     "format": "",
     "tooltip": "Open launcher",
     "on-click": "wofi --show drun"
+  },
+  "custom/date": {
+    "exec": "date +'%d %b %Y'",
+    "tooltip": "Current Date",
+    "interval": 60,
+    "format": " {}"
+  },
+  "custom/cpu": {
+    "exec": "~/.dotfiles/waybar/scripts/cpu.sh",
+    "tooltip": "CPU Usage",
+    "interval": 5,
+    "format": " {}"
+  },
+  "custom/memory": {
+    "exec": "~/.dotfiles/waybar/scripts/memory.sh",
+    "tooltip": "Memory Usage",
+    "interval": 5,
+    "format": "󰍛 {}"
+  },
+  "custom/disk": {
+    "exec": "~/.dotfiles/waybar/scripts/disk.sh",
+    "tooltip": "Disk Usage",
+    "interval": 5,
+    "format": " {}"
+  },
+  "custom/weather": {
+    "exec": "~/.dotfiles/waybar/scripts/weather.sh",
+    "tooltip": "Weather Forecast",
+    "interval": 1800,
+    "format": "{}"
+  },
+  "custom/separator": {
+    "format": "  |  ",
+    "tooltip": false
   }
 }

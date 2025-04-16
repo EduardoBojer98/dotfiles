@@ -1,32 +1,66 @@
 * {
 	font-family: "JetBrainsMono Nerd Font", monospace;
-	font-size: 14px;
-	color: #ffffff;
+	font-size: 16px;
+	color: #c0caf5; /* Tokyo Night foreground */
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
 }
 
 #waybar {
-	background: rgba(30, 30, 30, 0.9);
+	background: rgba(
+		26,
+		27,
+		38,
+		0.85
+	); /* Semi-transparent Tokyo Night background */
 	border-radius: 12px;
-	margin: 10px 10px 0 10px; /* top, right, bottom, left */
-	padding: 26px 12px;
-	border: 1px solid rgba(255, 255, 255, 0.1);
+	margin: 10px;
+	padding: 10px 16px;
+	border: 1px solid rgba(108, 112, 134, 0.2);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+#workspaces {
+	margin: 0 8px;
 }
 
 #workspaces button {
-	color: #a6adc8;
+	color: #7aa2f7;
 	background: transparent;
-	padding: 0 5px;
+	padding: 4px 10px;
+	margin: 0 4px;
+	border-radius: 8px;
+	transition: background 0.2s ease, color 0.2s ease;
 }
 
 #workspaces button.active {
 	color: #cba6f7;
-	background: #1e1e2e;
+	background: rgba(108, 112, 134, 0.2);
+}
+
+#workspaces button:hover {
+	background: rgba(108, 112, 134, 0.1);
 }
 
 #clock,
 #battery,
 #pulseaudio,
 #network,
-#tray {
-	margin: 0 5px;
+#tray,
+#custom-weather,
+#custom-temps,
+#custom-cpu,
+#custom-memory,
+#custom-disk,
+#custom-date,
+#custom-windows,
+#custom-wofi,
+#custom-separator {
+	margin: 0 8px;
+}
+
+#custom-separator {
+	color: #444b6a;
+	font-weight: bold;
 }
