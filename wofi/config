@@ -1,0 +1,3 @@
+show=drun
+style=~/.config/wofi/style.css
+term=foot

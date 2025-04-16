@@ -1,9 +1,22 @@
 {
   "layer": "top",
   "position": "top",
-  "modules-left": ["hyprland/workspaces", "hyprland/window"],
-  "modules-center": ["clock"],
-  "modules-right": ["network", "pulseaudio", "battery", "tray"],
+  "modules-left": [
+    "custom/wofi",
+    "hyprland/workspaces",
+    "hyprland/window"
+  ],
+  "modules-center": [
+    "clock",
+    "custom/windows"
+  ],
+  "modules-right": [
+    "tray",
+    "network",
+    "pulseaudio",
+    "battery",
+    "custom/temps"
+  ],
   "clock": {
     "format": "  {:%H:%M  %d %b}"
   },
@@ -12,10 +25,29 @@
   },
   "battery": {
     "format": "{icon} {capacity}%",
-    "format-icons": ["", "", "", "", ""]
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
   },
   "network": {
     "format-wifi": "  {essid}",
     "format-ethernet": "󰈀  {ifname}"
+  },
+  "custom/windows": {
+    "exec": "~/.config/waybar/scripts/windows.sh",
+    "interval": 2
+  },
+  "custom/temps": {
+    "exec": "~/.config/waybar/scripts/temps.sh",
+    "interval": 5
+  },
+  "custom/wofi": {
+    "format": "",
+    "tooltip": "Open launcher",
+    "on-click": "wofi --show drun"
   }
 }
