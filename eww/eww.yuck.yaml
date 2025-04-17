@@ -1,0 +1,16 @@
+vars:
+  wifi_enabled:
+    script: bash -c "nmcli radio wifi | grep -q enabled && echo true || echo false"
+    interval: 5s
+
+  bluetooth_enabled:
+    script: bash -c "bluetoothctl show | grep -q 'Powered: yes' && echo true || echo false"
+    interval: 5s
+
+  brightness:
+    script: brightnessctl g
+    interval: 5s
+
+  volume:
+    script: pamixer --get-volume
+    interval: 5s

@@ -21,7 +21,9 @@
     "pulseaudio",
     "custom/brightness",
     "battery",
-    "custom/notifications"
+    "custom/notifications",
+    "custom/power",
+    "custom/quicksettings"
   ],
   "clock": {
     "format": " {:%H:%M  %d %b}"
@@ -111,6 +113,16 @@
     "tooltip": false,
     "on-click": "foot -e less ~/.cache/dunst_notifications",
     "on-click-right": "truncate -s 0 ~/.cache/dunst_notifications"
+  },
+  "custom/power": {
+    "format": "⏻",
+    "tooltip": "Power Menu",
+    "on-click": "~/.dotfiles/waybar/scripts/power-menu.sh"
+  },
+  "custom/quicksettings": {
+    "format": "",
+    "tooltip": "Quick Settings",
+    "on-click": "eww open control-center || eww close control-center"
   },
   "custom/separator": {
     "format": "  |  ",

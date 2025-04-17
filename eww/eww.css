@@ -1,0 +1,52 @@
+* {
+	all: unset;
+	font-family: "JetBrainsMono Nerd Font", monospace;
+	color: #cdd6f4;
+}
+
+.control {
+	background-color: #1e1e2e;
+	border-radius: 16px;
+	padding: 12px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.row {
+	margin: 8px 0;
+	padding: 6px;
+	border-radius: 12px;
+	background-color: #2a2a3a; /* lighten(#1e1e2e, 4%) manually adjusted */
+	gap: 10px;
+}
+
+.toggle button {
+	transition: background 0.3s ease;
+	background-color: #f38ba8;
+	color: #1e1e2e;
+	border-radius: 10px;
+	padding: 4px 10px;
+}
+
+.toggle button:on {
+	background-color: #a6e3a1;
+}
+
+.section {
+	font-weight: bold;
+	font-size: 18px;
+	padding-bottom: 4px;
+	color: #89b4fa;
+}
+
+.slider-container {
+	min-width: 100px;
+	background-color: #1a1a26; /* darken(#1e1e2e, 2%) manually adjusted */
+	border-radius: 8px;
+	height: 6px;
+	overflow: hidden;
+}
+
+.slider-bar {
+	height: 100%;
+	background-color: #89b4fa;
+}

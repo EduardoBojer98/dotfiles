@@ -1,0 +1,26 @@
+(defwidget slider-row [label icon value onscroll]
+  (box :class "row"
+    (label :text icon)
+    (label :text label)
+    (box :class "slider-container"
+      (box
+        :class "slider-bar"
+        :style (str "min-width: " value "%")
+        :on-scroll-up (sh onscroll)
+        :on-scroll-down (sh onscroll)
+      )
+    )
+  )
+)
+
+(defwidget toggle-row [label icon state-var ontoggle]
+  (box :class "row toggle"
+    (label :text icon)
+    (label :text label)
+    (button
+      :label (if state-var "On" "Off")
+      :class (if state-var "on" "off")
+      :onclick (sh ontoggle)
+    )
+  )
+)
