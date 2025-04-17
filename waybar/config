@@ -4,7 +4,7 @@
   "mode": "dock",
   "margin-right": 10,
   "margin-left": 10,
-  "margin-top": 10,
+  "margin-top": 5,
   "modules-left": [
     "custom/wofi",
     "hyprland/workspaces",
@@ -20,7 +20,8 @@
     "network",
     "pulseaudio",
     "custom/brightness",
-    "battery"
+    "battery",
+    "custom/notifications"
   ],
   "clock": {
     "format": " {:%H:%M  %d %b}"
@@ -103,6 +104,13 @@
     "on-scroll-up": "~/.dotfiles/waybar/scripts/brightness-adjust.sh up",
     "on-scroll-down": "~/.dotfiles/waybar/scripts/brightness-adjust.sh down",
     "format": "{}"
+  },
+  "custom/notifications": {
+    "exec": "/home/eduardo/.dotfiles/waybar/scripts/notification-count.sh",
+    "interval": 5,
+    "tooltip": false,
+    "on-click": "foot -e less ~/.cache/dunst_notifications",
+    "on-click-right": "truncate -s 0 ~/.cache/dunst_notifications"
   },
   "custom/separator": {
     "format": "  |  ",

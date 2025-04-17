@@ -50,7 +50,8 @@
 #custom-date,
 #custom-windows,
 #custom-wofi,
-#custom-separator {
+#custom-separator,
+#custom-notifications {
 	margin: 0 15px;
 }
 
