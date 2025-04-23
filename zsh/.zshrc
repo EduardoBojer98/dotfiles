@@ -1,43 +1,37 @@
-# Zsh config directory
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Set ZDOTDIR to this config directory
 export ZDOTDIR="$HOME/dotfiles/zsh"
 
 # Oh My Zsh setup
 export ZSH="$ZDOTDIR/ohmyzsh"
-ZSH_THEME="robbyrussell"
-plugins=(git)
+
+# Point Oh My Zsh to custom theme/plugins (symlink or direct)
+ZSH_CUSTOM="$ZDOTDIR/custom"
+export ZSH_CUSTOM
+
+# Ensure custom plugins and themes exist
+mkdir -p "$ZSH_CUSTOM/plugins" "$ZSH_CUSTOM/themes"
+
+# Symlink plugins if not already
+[[ ! -e "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ]] && ln -s "$HOME/.zsh/plugins/zsh-autosuggestions" "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
+[[ ! -e "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]] && ln -s "$HOME/.zsh/plugins/zsh-syntax-highlighting" "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
+[[ ! -e "$ZSH_CUSTOM/themes/powerlevel10k" ]] && ln -s "$HOME/.zsh/plugins/powerlevel10k" "$ZSH_CUSTOM/themes/powerlevel10k"
+
+# Oh My Zsh settings
+ZSH_THEME="powerlevel10k/powerlevel10k"
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+
 source "$ZSH/oh-my-zsh.sh"
+
+# Load Powerlevel10k config if present
+[[ -f "$ZDOTDIR/.p10k.zsh" ]] && source "$ZDOTDIR/.p10k.zsh"
 
 # Path
 export PATH="$HOME/.local/bin:$PATH"
-
-# Plugin directory
-ZSH_PLUGIN_DIR="$HOME/.zsh/plugins"
-mkdir -p "$ZSH_PLUGIN_DIR"
-
-# Plugin sources
-declare -A custom_plugins=(
-  [zsh-autosuggestions]="https://github.com/zsh-users/zsh-autosuggestions.git"
-  [zsh-syntax-highlighting]="https://github.com/zsh-users/zsh-syntax-highlighting.git"
-  [pure]="https://github.com/sindresorhus/pure.git"
-)
-
-# Clone plugins if missing
-for plugin in "${(@k)custom_plugins}"; do
-  plugin_dir="$ZSH_PLUGIN_DIR/$plugin"
-  if [[ ! -d "$plugin_dir" ]]; then
-    echo "Installing $plugin..."
-    git clone --depth=1 "${custom_plugins[$plugin]}" "$plugin_dir"
-  fi
-done
-
-# Load Pure prompt
-fpath+="$ZSH_PLUGIN_DIR/pure"
-autoload -U promptinit; promptinit
-prompt pure
-
-# Load other plugins
-source "$ZSH_PLUGIN_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source "$ZSH_PLUGIN_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # Shell options
 setopt CORRECT
