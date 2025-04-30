@@ -11,7 +11,7 @@ sudo pacman -Syu --noconfirm
 
 # Install essential dependencies
 echo "Installing necessary dependencies..."
-sudo pacman -S --noconfirm base-devel git yay
+sudo pacman -S --noconfirm base-devel git
 
 # Install ROG Control Center (assuming AUR)
 if ! is_installed "rog-control-center"; then

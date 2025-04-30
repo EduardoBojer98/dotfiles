@@ -1,1 +1,1 @@
-# Dotfiles for Hyprland, Waybar, and More
+# Dotfiles for random staff
