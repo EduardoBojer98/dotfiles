@@ -44,14 +44,6 @@ Zsh is used as the default shell with the following plugins:
 - [`fast-syntax-highlighting`](https://github.com/zdharma-continuum/fast-syntax-highlighting) – Alternative fast highlighter.
 - [`zsh-completions`](https://github.com/zsh-users/zsh-completions) – Additional completion definitions.
 
-## Installation
-
-To install all required applications using `yay`, run the following command:
-
-```bash
-yay -S hyprland hyprpaper hyprlock hypridle waybar wofi kitty nwg-look kvantum-qt5 kvantum-qt6 kvantummanager papirus-icon-theme nerd-fonts-jetbrains-mono zsh zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting zsh-completions
-```
-
 ## Custom Scripts
 
 ### `monitor-switcher`
