@@ -1,0 +1,5 @@
+/home/eduardo/.config/hypr/
+/home/eduardo/.config/waybar/
+/home/eduardo/.config/wofi/
+/home/eduardo/.config/kitty/
+/home/eduardo/.config/mako/

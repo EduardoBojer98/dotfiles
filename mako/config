@@ -1,0 +1,46 @@
+# Mako Configuration for Catppuccin Macchiato theme
+
+# Font settings
+font_name = "JetBrainsMono Nerd Font"
+font_size = 12.0
+
+# Colors
+foreground = #cad3f5
+background = #24273a
+critical_foreground = #f4dbd6
+critical_background = #ed8796
+
+# Border settings
+border_width = 2
+border_color = #8aadf4
+
+# Padding settings
+padding = 10
+vertical_padding = 10
+horizontal_padding = 10
+
+# Timeout
+default_timeout = 5
+
+# Position
+position = top-right
+
+# Grouping
+grouped = true
+
+# Icon theme
+icon_theme = "Adwaita"
+
+# Hints
+hint_display_duration = 500
+
+# Critical notifications
+critical_font_name = "JetBrainsMono Nerd Font"
+critical_font_size = 12.0
+
+# Customizing the icon for specific notifications (optional)
+# icon_fallback = /path/to/your/icon.png
+
+# Bell (visual bell)
+visual_bell = true
+visual_bell_color = #ed8796

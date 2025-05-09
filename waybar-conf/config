@@ -1,73 +1,81 @@
 {
-    "layer": "top",
-    "position": "top",
-    "height": 30,
-    "modules-left": ["hyprland/workspaces", "hyprland/window"],
-    "modules-center": ["clock"],
-    "modules-right": [
-      "cpu",
-      "memory",
-      "network",
-      "pulseaudio",
-      "battery",
-      "tray"
-    ],
-  
-    "hyprland/workspaces": {
-      "on-click": "activate"
-    },
-  
-    "hyprland/window": {
-      "max-length": 50
-    },
-  
-    "clock": {
-      "interval": 60,
-      "format": "{:%a %d %b  %H:%M}"
-    },
-  
-    "cpu": {
-      "format": "  {usage}%",
-      "interval": 5
-    },
-  
-    "memory": {
-      "format": "  {used:0.1f}G",
-      "interval": 10
-    },
-  
-    "network": {
-      "format-wifi": "  {essid}",
-      "format-ethernet": "  {ipaddr}",
-      "format-disconnected": " Disconnected",
-      "tooltip-format": "{ifname} via {gwaddr}  {bandwidthUpBits}  {bandwidthDownBits}"
-    },
-  
-    "pulseaudio": {
-      "format": "{icon} {volume}%",
-      "format-muted": " muted",
-      "on-click": "pavucontrol",
-      "scroll-step": 5,
-      "format-icons": {
-        "default": ["", "", ""]
-      }
-    },
-  
-    "battery": {
-      "states": {
-        "good": 80,
-        "warning": 30,
-        "critical": 15
-      },
-      "format": "{icon} {capacity}%",
-      "format-charging": " {capacity}%",
-      "format-plugged": " {capacity}%",
-      "format-icons": ["", "", "", "", ""]
-    },
-  
-    "tray": {
-      "icon-size": 16,
-      "spacing": 10
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "modules-left": ["hyprland/workspaces", "hyprland/window"],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "tray",
+    // "cpu",
+    // "memory",
+    "network",
+    "pulseaudio",
+    "battery",
+    "custom/power"
+  ],
+
+  "hyprland/workspaces": {
+    "on-click": "activate"
+  },
+
+  "hyprland/window": {
+    "max-length": 50
+  },
+
+  "clock": {
+    "interval": 60,
+    "format": "{:%a %d %b  %H:%M}"
+  },
+
+  "cpu": {
+    "format": "  {usage}%",
+    "interval": 5
+  },
+
+  "memory": {
+    "format": "  {used:0.1f}G",
+    "interval": 10
+  },
+
+  "network": {
+    "format-wifi": "  {essid}",
+    "format-ethernet": "  {ipaddr}",
+    "format-disconnected": " Disconnected",
+    "tooltip-format": "{ifname} via {gwaddr}  {bandwidthUpBits}  {bandwidthDownBits}",
+    "on-click": "nm-connection-editor"
+  },
+
+  "pulseaudio": {
+    "format": "{icon}  {volume}%",
+    "format-muted": " muted",
+    "on-click": "pavucontrol",
+    "scroll-step": 5,
+    "format-icons": {
+      "default": ["", "", ""]
     }
+  },
+
+  "battery": {
+    "states": {
+      "good": 80,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-icons": ["", "", "", "", ""]
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10
+  },
+
+  "custom/power": {
+    "format": "⏻",
+    "tooltip": "Power Menu",
+    "on-click": "~/.config/waybar/scripts/power-menu.sh",
+    "interval": 60
   }
-  
+}
