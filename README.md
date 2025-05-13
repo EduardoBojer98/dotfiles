@@ -4,12 +4,13 @@ This repo contains my personal configuration files for a minimal and cohesive Wa
 
 ## Apps
 
-- **GNUstow** – To manage the dot files.
+- **GNU stow** – To manage the dot files.
 - **Hyprland** – Wayland window manager with tiling support.
 - **Hyprpaper** – Lightweight wallpaper daemon for Hyprland.
 - **Hyprlock** – Lock screen utility with blur and customization.
 - **Hypridle** – Idle daemon for triggering actions after inactivity (e.g., screen dim, lock).
 - **Waybar** – Customizable status bar for Wayland.
+- **swaync** – notification daimon.
 - **Wofi** – Application launcher for Wayland.
 - **Kitty** – Fast, GPU-accelerated terminal emulator.
 - **nwg-look** – Tool for applying GTK themes under Wayland.
