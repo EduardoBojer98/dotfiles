@@ -4,6 +4,7 @@ This repo contains my personal configuration files for a minimal and cohesive Wa
 
 ## Apps
 
+- **GNUstow** – To manage the dot files.
 - **Hyprland** – Wayland window manager with tiling support.
 - **Hyprpaper** – Lightweight wallpaper daemon for Hyprland.
 - **Hyprlock** – Lock screen utility with blur and customization.
