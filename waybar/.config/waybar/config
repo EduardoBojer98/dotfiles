@@ -6,8 +6,8 @@
   "modules-center": ["clock"],
   "modules-right": [
     "tray",
-    // "cpu",
-    // "memory",
+    "cpu",
+    "memory",
     "network",
     "pulseaudio",
     "battery",
@@ -75,7 +75,7 @@
   "custom/power": {
     "format": "⏻",
     "tooltip": "Power Menu",
-    "on-click": "~/.config/waybar/scripts/power-menu.sh",
+    "on-click": "wlogout",
     "interval": 60
   }
 }

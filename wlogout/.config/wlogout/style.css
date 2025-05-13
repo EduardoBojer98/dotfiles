@@ -1,114 +1,102 @@
 * {
     background-image: none;
-    font-size: 14px;
+    font-size: 14px; /* Assuming font-size as 14px */
 }
 
 window {
     background-color: transparent;
 }
 
-/* General button styling */
 button {
-    color: #cdd6f4; /* Text color */
-    background-color: #1e1e2e; /* Base */
-    outline: none;
+    color: #FFFFFF; /* Assuming button color as white */
+    background-color: #1e1e1e; /* Assuming background color as dark */
+    outline-style: none;
     border: none;
+    border-width: 0px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: 20%;
-    border-radius: 0px;
+    border-radius: 5px; /* Assuming radius for button */
     box-shadow: none;
     text-shadow: none;
     animation: gradient_f 20s ease-in infinite;
 }
 
-/* Focused state */
 button:focus {
-    background-color: #313244; /* Surface 1 */
+    background-color: #333333; /* Assuming active background */
     background-size: 30%;
 }
 
-/* Hover effect */
 button:hover {
-    background-color: #f5c2e7; /* Pink */
+    background-color: #555555; /* Assuming hover background */
     background-size: 40%;
-    border-radius: 10px;
-    transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682);
+    border-radius: 5px; /* Assuming active button radius */
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s cubic-bezier(.55,0.0,.28,1.682);
 }
 
-/* Individual hover margins */
 button:hover#lock {
-    margin: 5px 0px 5px 10px;
+    border-radius: 5px; /* Assuming active radius */
+    margin : 5px 0px 5px 5px; /* Assuming hover margin */
 }
 
-button:hover#logout,
-button:hover#suspend,
-button:hover#shutdown,
+button:hover#logout {
+    border-radius: 5px; /* Assuming active radius */
+    margin : 5px 0px 5px 0px; /* Assuming hover margin */
+}
+
+button:hover#suspend {
+    border-radius: 5px; /* Assuming active radius */
+    margin : 5px 0px 5px 0px; /* Assuming hover margin */
+}
+
+button:hover#shutdown {
+    border-radius: 5px; /* Assuming active radius */
+    margin : 5px 0px 5px 0px; /* Assuming hover margin */
+}
+
 button:hover#hibernate {
-    margin: 5px 0px 5px 0px;
+    border-radius: 5px; /* Assuming active radius */
+    margin : 5px 0px 5px 0px; /* Assuming hover margin */
 }
 
 button:hover#reboot {
-    margin: 5px 10px 5px 0px;
+    border-radius: 5px; /* Assuming active radius */
+    margin : 5px 5px 5px 0px; /* Assuming hover margin */
 }
 
-/* Button backgrounds with white icons */
 #lock {
-    background-image: image(
-        url("/home/eduardo/.config/wlogout/icons/lock_white.png"),
-        url("/usr/share/wlogout/icons/lock.png"),
-        url("/usr/local/share/wlogout/icons/lock.png")
-    );
-    border-radius: 15px 0px 0px 15px;
-    margin: 10px 0px 10px 10px;
+    background-image: image(url("$HOME/.config/wlogout/icons/lock_white.png"), url("/usr/share/wlogout/icons/lock.png"), url("/usr/local/share/wlogout/icons/lock.png"));
+    border-radius: 5px 0px 0px 5px; /* Assuming button border radius */
+    margin : 5px 0px 5px 5px; /* Assuming button margin */
 }
 
 #logout {
-    background-image: image(
-        url("/home/eduardo/.config/wlogout/icons/logout_white.png"),
-        url("/usr/share/wlogout/icons/logout.png"),
-        url("/usr/local/share/wlogout/icons/logout.png")
-    );
-    border-radius: 0px;
-    margin: 10px 0px 10px 0px;
+    background-image: image(url("$HOME/.config/wlogout/icons/logout_white.png"), url("/usr/share/wlogout/icons/logout.png"), url("/usr/local/share/wlogout/icons/logout.png"));
+    border-radius: 0px 0px 0px 0px;
+    margin : 5px 0px 5px 0px;
 }
 
 #suspend {
-    background-image: image(
-        url("/home/eduardo/.config/wlogout/icons/suspend_white.png"),
-        url("/usr/share/wlogout/icons/suspend.png"),
-        url("/usr/local/share/wlogout/icons/suspend.png")
-    );
-    border-radius: 0px;
-    margin: 10px 0px 10px 0px;
+    background-image: image(url("$HOME/.config/wlogout/icons/suspend_white.png"), url("/usr/share/wlogout/icons/suspend.png"), url("/usr/local/share/wlogout/icons/suspend.png"));
+    border-radius: 0px 0px 0px 0px;
+    margin : 5px 0px 5px 0px;
 }
 
 #shutdown {
-    background-image: image(
-        url("/home/eduardo/.config/wlogout/icons/shutdown_white.png"),
-        url("/usr/share/wlogout/icons/shutdown.png"),
-        url("/usr/local/share/wlogout/icons/shutdown.png")
-    );
-    border-radius: 0px;
-    margin: 10px 0px 10px 0px;
+    background-image: image(url("$HOME/.config/wlogout/icons/shutdown_white.png"), url("/usr/share/wlogout/icons/shutdown.png"), url("/usr/local/share/wlogout/icons/shutdown.png"));
+    border-radius: 0px 0px 0px 0px;
+    margin : 5px 0px 5px 0px;
 }
 
 #hibernate {
-    background-image: image(
-        url("/home/eduardo/.config/wlogout/icons/hibernate_white.png"),
-        url("/usr/share/wlogout/icons/hibernate.png"),
-        url("/usr/local/share/wlogout/icons/hibernate.png")
-    );
-    border-radius: 0px;
-    margin: 10px 0px 10px 0px;
+    background-image: image(url("$HOME/.config/wlogout/icons/hibernate_white.png"), url("/usr/share/wlogout/icons/hibernate.png"), url("/usr/local/share/wlogout/icons/hibernate.png"));
+    border-radius: 0px 0px 0px 0px;
+    margin : 5px 0px 5px 0px;
 }
 
 #reboot {
-    background-image: image(
-        url("/home/eduardo/.config/wlogout/icons/reboot_white.png"),
-        url("/usr/share/wlogout/icons/reboot.png"),
-        url("/usr/local/share/wlogout/icons/reboot.png")
-    );
-    border-radius: 0px 15px 15px 0px;
-    margin: 10px 10px 10px 0px;
+    background-image: image(url("$HOME/.config/wlogout/icons/reboot_white.png"), url("/usr/share/wlogout/icons/reboot.png"), url("/usr/local/share/wlogout/icons/reboot.png"));
+    border-radius: 0px 5px 5px 0px; /* Assuming button border radius */
+    margin : 5px 5px 5px 0px; /* Assuming button margin */
 }
