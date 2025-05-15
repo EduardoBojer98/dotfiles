@@ -16,6 +16,7 @@
     "network",
     "pulseaudio",
     "battery",
+    "custom/keyboard",
     "custom/notification",
     "custom/power"
   ],
@@ -84,6 +85,12 @@
     "on-click": "wlogout",
     "interval": 60
   },
+  "custom/keyboard": {
+  "format": "⌨️",
+  "tooltip": "Virtual Keyboard",
+  "on-click": "~/.config/waybar/scripts/toggle-wvkbd.sh",
+  "interval": 60
+},
   "custom/notification": {
     "tooltip": false,
     "format": "{icon}",

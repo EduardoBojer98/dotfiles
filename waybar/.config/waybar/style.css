@@ -52,6 +52,7 @@ button:hover {
 #tray,
 #custom-notification,
 #custom-temps,
+#custom-keyboard,
 #custom-power {
     padding: 0 10px;
     background: transparent;
