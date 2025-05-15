@@ -5,10 +5,11 @@
 }
 
 window#waybar {
-    background-color: rgba(30, 30, 30, 0.5);
-    /* backdrop-filter: blur(10px); */
+    background-color: rgba(30, 30, 30, 0.7);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     transition: background-color 0.3s ease;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
 }
 
 window#waybar.hidden {
@@ -49,6 +50,8 @@ button:hover {
 #network,
 #pulseaudio,
 #tray,
+#custom-notification,
+#custom-temps,
 #custom-power {
     padding: 0 10px;
     background: transparent;

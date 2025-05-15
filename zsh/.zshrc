@@ -53,3 +53,5 @@ alias please='sudo'
 
 # Enable Powerlevel10k instant prompt (optional but makes shell faster)
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export WLR_RENDERER_ALLOW_SOFTWARE=1
