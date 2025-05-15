@@ -7,7 +7,9 @@
     "hyprland/window"
   ],
   "modules-center": [
-    "clock"
+    "clock",
+    "custom/hypridle_toggle",
+    "custom/hypridle"
   ],
   "modules-right": [
     "tray",
@@ -86,11 +88,11 @@
     "interval": 60
   },
   "custom/keyboard": {
-  "format": "⌨️",
-  "tooltip": "Virtual Keyboard",
-  "on-click": "~/.config/waybar/scripts/toggle-wvkbd.sh",
-  "interval": 60
-},
+    "format": "⌨️",
+    "tooltip": "Virtual Keyboard",
+    "on-click": "~/.config/waybar/scripts/toggle-wvkbd.sh",
+    "interval": 60
+  },
   "custom/notification": {
     "tooltip": false,
     "format": "{icon}",
@@ -110,5 +112,25 @@
     "on-click": "swaync-client -t -sw",
     "on-click-right": "swaync-client -d -sw",
     "escape": true
+  },
+  "custom/hypridle_toggle": {
+    "tooltip": true,
+    "tooltip-format-activated": "Idle_inhibitor active",
+    "tooltip-format-deactivated": "Idle_inhibitor not active",
+    "format": "{icon}",
+    "format-icons": {
+      "activated": " ",
+      "deactivated": " "
+    }
+  },
+  "custom/hypridle": {
+    "format": "󱫗 ",
+    "return-type": "json",
+    "escape": true,
+    "exec-on-event": true,
+    "interval": 60,
+    "exec": "$HOME/.config/hypr/scripts/Hypridle.sh status",
+    "on-click": "$HOME/.config/hypr/scripts/Hypridle.sh toggle",
+    "on-click-right": "hyprlock"
   }
 }

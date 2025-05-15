@@ -53,9 +53,15 @@ button:hover {
 #custom-notification,
 #custom-temps,
 #custom-keyboard,
+#custom-hypridle_toggle,
+#custom-hypridle,
 #custom-power {
     padding: 0 10px;
     background: transparent;
+}
+#custom-hypridle.notactive,
+#custom-hypridle_toggle.activated {
+	color: #39FF14;
 }
 
 #pulseaudio.muted {
