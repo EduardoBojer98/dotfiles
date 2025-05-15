@@ -8,7 +8,7 @@
   ],
   "modules-center": [
     "clock",
-    "custom/hypridle_toggle",
+    "custom/temperature",
     "custom/hypridle"
   ],
   "modules-right": [
@@ -39,6 +39,13 @@
   "memory": {
     "format": "  {used:0.1f}G",
     "interval": 10
+  },
+  "custom/temperature": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/temps.sh",
+    "interval": 10,
+    "escape": true
   },
   "network": {
     "format-wifi": "  {essid}",
@@ -88,10 +95,12 @@
     "interval": 60
   },
   "custom/keyboard": {
-    "format": "⌨️",
-    "tooltip": "Virtual Keyboard",
+    "format": "⌨️ {}",
+    "tooltip": false,
+    "exec": "pgrep wvkbd-mobintl >/dev/null && echo 'On' || echo 'Off'",
     "on-click": "~/.config/waybar/scripts/toggle-wvkbd.sh",
-    "interval": 60
+    "escape": true,
+    "interval": 5
   },
   "custom/notification": {
     "tooltip": false,
@@ -113,24 +122,14 @@
     "on-click-right": "swaync-client -d -sw",
     "escape": true
   },
-  "custom/hypridle_toggle": {
-    "tooltip": true,
-    "tooltip-format-activated": "Idle_inhibitor active",
-    "tooltip-format-deactivated": "Idle_inhibitor not active",
-    "format": "{icon}",
-    "format-icons": {
-      "activated": " ",
-      "deactivated": " "
-    }
-  },
   "custom/hypridle": {
-    "format": "󱫗 ",
+    "format": "{}",
     "return-type": "json",
     "escape": true,
-    "exec-on-event": true,
-    "interval": 60,
-    "exec": "$HOME/.config/hypr/scripts/Hypridle.sh status",
-    "on-click": "$HOME/.config/hypr/scripts/Hypridle.sh toggle",
-    "on-click-right": "hyprlock"
+    "exec": "~/.config/waybar/scripts/hypridle_toggle.sh",
+    "on-click": "~/.config/waybar/scripts/hypridle_toggle.sh toggle",
+    "on-click-right": "hyprlock",
+    "interval": 5,
+    "restart-interval": 5
   }
 }

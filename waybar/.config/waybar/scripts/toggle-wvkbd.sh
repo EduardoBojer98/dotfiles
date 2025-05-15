@@ -1,9 +1,15 @@
 #!/bin/bash
 
-if pgrep wvkbd-mobintl > /dev/null; then
-  # If running, send SIGUSR2 to hide/close it
-  pkill -SIGUSR2 wvkbd-mobintl
+# Check if keyboard is running
+if pgrep -x "wvkbd-mobintl" > /dev/null; then
+    # If running, try to hide it with SIGUSR2 first
+    pkill -SIGUSR2 -x "wvkbd-mobintl"
+    # If still running after 0.5s, kill it completely
+    sleep 0.5
+    if pgrep -x "wvkbd-mobintl" > /dev/null; then
+        pkill -x "wvkbd-mobintl"
+    fi
 else
-  # If not running, launch with your options
-  wvkbd-mobintl -H 550 --fn 'JetBrainsMono Nerd Font 20' --alpha 200 &
+    # If not running, launch it
+    wvkbd-mobintl -H 550 --fn 'JetBrainsMono Nerd Font 20' --alpha 200 &
 fi

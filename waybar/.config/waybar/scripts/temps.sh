@@ -1,24 +1,30 @@
 #!/bin/bash
 
-# Try to get CPU temp from thermal zones (first valid reading)
-CPU_TEMP=""
+# Get CPU temperature
+CPU_TEMP="N/A"
 for zone in /sys/class/thermal/thermal_zone*/temp; do
     if [ -f "$zone" ]; then
         temp=$(cat "$zone")
-        # If temp is a reasonable value (>1000 millidegrees)
         if [[ $temp -gt 1000 ]]; then
-            # Convert millidegrees to degrees Celsius
             CPU_TEMP=$((temp / 1000))
             break
         fi
     fi
 done
 
-# Fallback to empty if nothing found
-CPU_TEMP=${CPU_TEMP:-""}
+# Get GPU temperature (NVIDIA)
+GPU_TEMP="N/A"
+if command -v nvidia-smi &> /dev/null; then
+    gpu_temp=$(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits 2>/dev/null | head -n1)
+    if [[ -n "$gpu_temp" ]]; then
+        GPU_TEMP="$gpu_temp"
+    fi
+fi
 
-# Get GPU temp from nvidia-smi (if available)
-GPU_TEMP=$(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits 2>/dev/null | head -n1)
-GPU_TEMP=${GPU_TEMP:-""}
+# Icons (using Nerd Font icons or similar)
+CPU_ICON=""  # Microchip icon
+GPU_ICON=""   # Graphics card icon
+DEGREE_ICON="°"
 
-echo "{\"cpu\": \"$CPU_TEMP\", \"gpu\": \"$GPU_TEMP\"}"
+# Output JSON
+echo "{\"text\": \"$CPU_ICON ${CPU_TEMP}$DEGREE_ICON $GPU_ICON ${GPU_TEMP}$DEGREE_ICON\", \"tooltip\": \"$CPU_ICON CPU: ${CPU_TEMP}$DEGREE_ICON\n$GPU_ICON GPU: ${GPU_TEMP}$DEGREE_ICON\", \"class\": \"temperature\"}"
