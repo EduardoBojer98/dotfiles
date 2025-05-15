@@ -10,29 +10,36 @@
 #notification-center {
   background-color: #1e1e2e;
   border-radius: 12px;
-  padding: 10px;
-  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.4);
+  padding: 12px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
 }
 
 /* Individual Notification */
 .notification-row {
   background-color: #181825;
   border-radius: 10px;
-  margin: 6px 0;
-  padding: 10px;
+  margin: 8px 0;
+  padding: 12px;
   border: 1px solid #313244;
+  transition: background-color 0.2s ease;
+}
+
+.notification-row:hover {
+  background-color: #1f1f2e;
 }
 
 /* Notification Title */
 .notification-title {
   font-weight: bold;
   color: #f5c2e7;
+  font-size: 15px;
 }
 
 /* Body Text */
 .notification-body {
   color: #bac2de;
-  margin-top: 4px;
+  margin-top: 6px;
+  line-height: 1.4;
 }
 
 /* Timestamp */
@@ -40,17 +47,66 @@
   color: #9399b2;
   font-size: 12px;
   margin-top: 6px;
+  text-align: right;
 }
 
 /* Action Buttons */
+.controls {
+  margin-top: 8px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
 .controls button {
   background-color: #313244;
   color: #cdd6f4;
-  padding: 4px 8px;
+  padding: 6px 10px;
   border-radius: 6px;
-  margin: 4px 2px 0 0;
+  font-size: 13px;
+  transition: background-color 0.2s ease;
 }
 
 .controls button:hover {
   background-color: #45475a;
+}
+
+/* Volume Widget */
+#volume {
+  background-color: #181825;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #313244;
+}
+
+#volume slider {
+  min-height: 4px;
+  border-radius: 4px;
+  background-color: #313244;
+}
+
+#volume slider highlight {
+  background-color: #89b4fa;
+  border-radius: 4px;
+}
+
+/* Brightness Widget */
+#backlight {
+  background-color: #181825;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #313244;
+}
+
+#backlight slider {
+  min-height: 4px;
+  border-radius: 4px;
+  background-color: #313244;
+}
+
+#backlight slider highlight {
+  background-color: #f9e2af;
+  border-radius: 4px;
 }
