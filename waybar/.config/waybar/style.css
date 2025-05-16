@@ -54,6 +54,7 @@ button:hover {
 #custom-temps,
 #custom-keyboard,
 #custom-hypridle,
+#custom-wofi-launcher,
 #custom-power {
     padding: 0 10px;
     background: transparent;

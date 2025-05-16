@@ -11,4 +11,4 @@ print_command=true
 matching=fuzzy
 insensitive=true
 prompt=Search...
-columns=2
+columns=1

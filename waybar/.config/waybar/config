@@ -3,16 +3,17 @@
   "position": "top",
   "height": 30,
   "modules-left": [
+    "custom/wofi-launcher",
     "hyprland/workspaces",
     "hyprland/window"
   ],
   "modules-center": [
     "clock",
-    "custom/temperature",
     "custom/hypridle"
   ],
   "modules-right": [
     "tray",
+    "custom/temperature",
     "cpu",
     "memory",
     "network",
@@ -131,5 +132,12 @@
     "on-click-right": "hyprlock",
     "interval": 5,
     "restart-interval": 5
-  }
+  },
+  "custom/wofi-launcher": {
+  "format": "",
+  "tooltip": false,
+  "on-click": "wofi --show drun",
+  "interval": 0
+}
+
 }
