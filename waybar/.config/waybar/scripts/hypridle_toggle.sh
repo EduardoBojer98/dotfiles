@@ -16,10 +16,10 @@ output_json() {
     local status=$1
     if [[ $status -eq 0 ]]; then
         # hypridle is running (inhibitor NOT active)
-        echo '{"text":"󱫗","tooltip":"Idle inhibitor NOT ACTIVE\nClick to activate","class":"active"}'
+        echo '{"text":"󱫗 not active","tooltip":"Idle inhibitor NOT ACTIVE\nClick to activate","class":"active"}'
     else
         # hypridle is not running (inhibitor ACTIVE)
-        echo '{"text":"󰾪","tooltip":"Idle inhibitor ACTIVE\nClick to deactivate","class":"inactive"}'
+        echo '{"text":"󰾪 active","tooltip":"Idle inhibitor ACTIVE\nClick to deactivate","class":"inactive"}'
     fi
 }
 
