@@ -1,0 +1,148 @@
+/*****----- Configuration -----*****/
+configuration {
+    modi:                       "drun,run,window";
+    show-icons:                 true;
+    display-drun:               " Apps";
+    drun-display-format:        "{name}";
+    font:                       "Fira Code 12";
+}
+
+/*****----- Colors -----*****/
+* {
+    background:     #1E2127FF;
+    background-alt: #282B31FF;
+    foreground:     #FFFFFFFF;
+    selected:       #61AFEFFF;
+    active:         #98C379FF;
+    urgent:         #E06C75FF;
+}
+
+/*****----- Main Window -----*****/
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       800px;
+    x-offset:                    0px;
+    y-offset:                    0px;
+
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px;
+    border-radius:               12px;
+    border-color:                @selected;
+    background-color:            @background;
+    cursor:                      "default";
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    spacing:                     20px;
+    margin:                      20px;
+    padding:                     0px;
+    background-color:            transparent;
+    children:                    [ "inputbar", "listview" ];
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    spacing:                     10px;
+    margin:                      0 0 10px 0;
+    padding:                     8px 16px;
+    border:                      0px;
+    border-radius:               8px;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    children:                    [ "prompt", "entry" ];
+}
+
+prompt {
+    enabled:                     true;
+    padding:                     8px 12px;
+    border-radius:               6px;
+    background-color:            @selected;
+    text-color:                  @background;
+}
+
+entry {
+    enabled:                     true;
+    padding:                     8px 0;
+    background-color:            inherit;
+    text-color:                  inherit;
+    placeholder:                 "Search...";
+    placeholder-color:           #7F848EFF;
+}
+
+/*****----- Listview -----*****/
+listview {
+    columns:                     2;
+    lines:                       8;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     0px;
+    background-color:            transparent;
+}
+
+scrollbar {
+    handle-width:                4px;
+    handle-color:                @selected;
+    background-color:            @background-alt;
+}
+
+/*****----- Elements -----*****/
+element {
+    spacing:                     12px;
+    margin:                      0px;
+    padding:                     8px 12px;
+    border:                      0px;
+    border-radius:               6px;
+    background-color:            transparent; /* This ensures no alternating colors */
+    text-color:                  @foreground;
+    cursor:                      pointer;
+}
+
+element normal.normal {
+    background-color:            transparent;
+}
+
+element alternate.normal {
+    background-color:            transparent; /* Explicitly set alternate items to same color */
+}
+
+element selected.normal {
+    background-color:            @background-alt;
+    text-color:                  @selected;
+}
+
+element-icon {
+    padding:                     8px;
+    border-radius:               6px;
+    background-color:            @selected;
+    text-color:                  @background;
+    size:                        24px;
+}
+
+element-text {
+    margin:                      0px 4px;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+
+/*****----- Hover Effects -----*****/
+element selected.normal {
+    background-color:            @background-alt;
+}
+
+/*****----- Message -----*****/
+error-message {
+    padding:                     16px;
+    border:                      0px;
+    border-radius:               8px;
+    background-color:            @urgent;
+    text-color:                  @foreground;
+}
