@@ -1,96 +1,144 @@
 * {
-    font-family: "JetBrainsMono Nerd Font", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
-    color: #ECEFF4;
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-weight: 600;
+    font-size: 14px;
+    min-height: 0;
 }
 
 window#waybar {
-    background-color: rgba(30, 30, 30, 0.7);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    transition: background-color 0.3s ease;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-}
-
-window#waybar.hidden {
-    opacity: 0.2;
-}
-
-button {
     background: transparent;
-    border: none;
-    box-shadow: none;
-    padding: 0 8px;
+    color: #89b4fa;
 }
 
-button:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+/* ===== Shared Module Style ===== */
+/* .modules-left>widget,
+.modules-center>widget,
+.modules-right>widget {
+    margin: 0 4px;
+} */
+
+#custom-wofi-launcher,
+#custom-keyboard,
+#custom-notification,
+#custom-hypridle,
+#custom-temperature,
+#custom-power,
+#pulseaudio,
+#battery,
+#clock,
+#tray,
+#network,
+#backlight,
+#window,
+#custom-weather {
+    background: #1e1e2e;
+    border: 1px solid #181825;
+    padding: 6px 14px;
+    margin: 6px 0;
+    color: #89b4fa;
+    border-radius: 10px;
+    transition: background 0.2s ease, color 0.2s ease;
 }
+
+#custom-wofi-launcher:hover,
+#custom-keyboard:hover,
+#custom-notification:hover,
+#custom-hypridle:hover,
+#custom-temperature:hover,
+#custom-power:hover,
+#pulseaudio:hover,
+#battery:hover,
+#clock:hover,
+#tray:hover,
+#network:hover,
+#backlight:hover,
+#window:hover,
+#custom-weather:hover {
+    background: #313244;
+    color: #cdd6f4;
+}
+
+/* ===== Individual Modules with Custom Radius and Margin ===== */
+#custom-keyboard {
+    border-radius: 10px 0 0 10px;
+    margin-left: 6px;
+}
+
+#window {
+    border-radius: 0 10px 10px 0;
+}
+
+#custom-wofi-launcher {
+    margin-left: 4px;
+    border-radius: 10px 0 0 10px;
+
+}
+
+#custom-notification {
+    border-radius: 0;
+}
+
+#custom-power {
+    color: #f38ba8;
+    border-radius: 0 10px 10px 0;
+    margin-right: 8px;
+}
+
+#pulseaudio {
+    border-radius: 10px 0 0 10px;
+    margin-left: 8px;
+}
+
+#battery {
+    border-radius: 0 10px 10px 0;
+}
+
+#battery.charging {
+    color: #89b4fa;
+}
+
+#tray {
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+#clock,
+#custom-hypridle,
+#custom-weather {
+    margin-right: 6px;
+}
+
+/* ===== Workspaces ===== */
+#workspaces {
+    background: #1e1e2e;
+    border: 1px solid #181825;
+    border-radius: 0;
+    padding: 6px 12px;
+    margin: 6px 0;
+    transition: background 0.2s ease;
+}
+
+/* #workspaces:hover {
+    background: #313244;
+} */
 
 #workspaces button {
-    color: #D8DEE9;
-    padding: 0 8px;
-    border-radius: 4px;
+    padding: 4px 10px;
+    color: #6c7086;
     background: transparent;
+    border: none;
+    box-shadow: inset 0 -3px transparent;
+    transition: all 0.2s ease-in-out;
 }
 
-#workspaces button.focused {
-    background-color: rgba(98, 114, 164, 0.4);
-    color: #ECEFF4;
-}
+/* #workspaces button.focused {
+    color: #89b4fa;
+    box-shadow: inset 0 -3px #89b4fa;
+} */
 
-#workspaces button.urgent {
-    background-color: rgba(191, 97, 106, 0.8);
-}
-
-/* Unified module styling */
-#clock,
-#battery,
-#cpu,
-#memory,
-#network,
-#pulseaudio,
-#tray,
-#custom-notification,
-#custom-temps,
-#custom-keyboard,
-#custom-hypridle,
-#custom-wofi-launcher,
-#custom-power,
-#network,
-#pulseaudio,
-#battery,
-#custom-notification,
-#custom-power {
-    padding: 0 8px;
-    background: transparent;
-}
-
-/* Keep your original special states */
-#custom-hypridle.active {
-    color: #a6e3a1;
-}
-
-#custom-hypridle.inactive {
-    color: #f38ba8;
-}
-
-#pulseaudio.muted {
-    color: #4C566A;
-}
-
-#battery.critical:not(.charging) {
-    color: #BF616A;
-    animation: blink 0.5s steps(12) infinite alternate;
-}
-
-@keyframes blink {
-    to {
-        color: #ECEFF4;
-    }
-}
-
-/* More compact layout */
-.modules-left, .modules-center, .modules-right {
-    padding: 0 12px;
-}
+/* #workspaces button:hover {
+    background: #313244;
+    color: #cdd6f4;
+} */
