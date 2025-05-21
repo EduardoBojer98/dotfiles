@@ -1,53 +1,67 @@
 # Dotfiles – Personal Linux Configuration
 
-This repo contains my personal configuration files for a minimal and cohesive Wayland setup using Hyprland.
+This repository contains my personal dotfiles for a minimal, performant, and cohesive Wayland setup using Hyprland.
 
 ## Apps
 
-- **GNU stow** – To manage the dot files.
-- **wvkbd** – on screen keyboard.
-- **Hyprland** – Wayland window manager with tiling support.
+- **GNU Stow** – Manages symlinks for dotfiles across directories.
+- **wvkbd** – On-screen virtual keyboard for Wayland.
+- **Hyprland** – A dynamic tiling Wayland compositor.
 - **Hyprpaper** – Lightweight wallpaper daemon for Hyprland.
-- **Hyprlock** – Lock screen utility with blur and customization.
-- **Hypridle** – Idle daemon for triggering actions after inactivity (e.g., screen dim, lock).
-- **Waybar** – Customizable status bar for Wayland.
-- **swaync** – notification daimon.
+- **Hyprlock** – Lock screen with blur and styling support.
+- **Hypridle** – Idle daemon for triggering actions (e.g., screen dimming, lock).
+- **Waybar** – Highly customizable status bar for Wayland.
+- **swaync** – Notification daemon compatible with Wayland.
 - **Wofi** – Application launcher for Wayland.
-- **Kitty** – Fast, GPU-accelerated terminal emulator.
-- **nwg-look** – Tool for applying GTK themes under Wayland.
-- **kvantum-qt5 / kvantum-qt6** – Enables theming for Qt5/Qt6 applications.
-- **kvantummanager** – GUI for managing Kvantum Qt themes.
-
-## Theming
-
-### 🎨 Theme – Catppuccin
-
-- 🌈 Multiple flavors: Latte, Frappe, Macchiato, Mocha  
-- 🔗 [https://github.com/catppuccin](https://github.com/catppuccin)  
-- Supports GTK, Kvantum, and terminal themes (Kitty, Alacritty, etc.)
-
-### 🧊 Icon Pack – Papirus
-
-- 🔗 [https://github.com/PapirusDevelopmentTeam/papirus-icon-theme](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)  
-- Clean, modern, and frequently updated icon set.
-
-### 🔤 Font – Nerd Font (Recommended: JetBrainsMono Nerd Font)
-
-- Includes patched icons for terminal and status bar usage.  
-- 🔗 [https://www.nerdfonts.com/font-downloads](https://www.nerdfonts.com/font-downloads)
+- **Kitty** – GPU-accelerated terminal emulator.
+- **nwg-look** – Tool to apply GTK themes under Wayland.
+- **kvantum-qt5 / kvantum-qt6** – Enables custom theming for Qt5/Qt6 applications.
+- **kvantummanager** – GUI for managing Kvantum themes.
+- **hyprshot** – Simple screenshot utility for Hyprland.
 
 ## Shell
 
 ### ⚙️ Zsh
 
-Zsh is used as the default shell with the following plugins:
+Zsh is used as the default shell, configured with **Oh My Zsh** and **Powerlevel10k** for a fast and visually rich command-line experience.
 
-- [`zsh-autosuggestions`](https://github.com/zsh-users/zsh-autosuggestions) – Suggests commands as you type.
-- [`zsh-syntax-highlighting`](https://github.com/zsh-users/zsh-syntax-highlighting) – Highlights command syntax.
-- [`fast-syntax-highlighting`](https://github.com/zdharma-continuum/fast-syntax-highlighting) – Alternative fast highlighter.
-- [`zsh-completions`](https://github.com/zsh-users/zsh-completions) – Additional completion definitions.
+#### Prompt & Theme
 
-## Custom Scripts
+- **[Powerlevel10k](https://github.com/romkatv/powerlevel10k)** is used as the shell prompt theme.
+- Instant prompt is enabled to improve startup performance.
 
-### `monitor-switcher`
-Switches display output between HDMI-1 and HDMI-2.
+#### Plugins
+
+The following Oh My Zsh plugins are enabled:
+
+- `git` – Git aliases and functions.
+- `z` – Directory jumping based on frecency.
+- `zoxide` – Smarter, faster alternative to `cd`.
+- `fzf` – Fuzzy search tool.
+- `sudo` – Allows pressing `Esc` twice to prefix previous command with `sudo`.
+- `zsh-autosuggestions` – Suggests commands based on history and completions.
+- `zsh-syntax-highlighting` – Adds syntax highlighting to commands.
+
+#### Configuration Highlights
+
+- **History**: Stores up to 10,000 commands in `~/.zsh_history`.
+- **PATH**: Includes `$HOME/bin`, `$HOME/.local/bin`, and `/usr/local/bin`.
+- **Manpages**: Enhanced man page display using `bat`.
+- **Editor**: `nvim` is set as the default editor.
+- **Zoxide**: Initialized via `eval "$(zoxide init zsh)"`.
+
+#### Aliases
+
+```sh
+alias ll='exa -al --color=always --group-directories-first'
+alias la='exa -a'
+alias l='exa'
+alias cat='bat'
+alias gs='git status'
+alias gl='git log --oneline --graph --all --decorate'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias please='sudo'
+```
+## monitor-switcher
+Simple script/apps to toggle external displays between HDMI-1 and HDMI-2.
