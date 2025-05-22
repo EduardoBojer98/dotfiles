@@ -84,7 +84,7 @@ listview {
     layout:                      vertical;
     spacing:                     10px;
     margin:                      0px;
-    padding:                     0px;
+    padding:                     10px;
     background-color:            transparent;
 }
 
@@ -101,7 +101,7 @@ element {
     padding:                     8px 12px;
     border:                      0px;
     border-radius:               6px;
-    background-color:            transparent; /* This ensures no alternating colors */
+    background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      pointer;
 }
@@ -111,7 +111,7 @@ element normal.normal {
 }
 
 element alternate.normal {
-    background-color:            transparent; /* Explicitly set alternate items to same color */
+    background-color:            transparent;
 }
 
 element selected.normal {
@@ -120,11 +120,11 @@ element selected.normal {
 }
 
 element-icon {
-    padding:                     8px;
+    padding:                     4px;
     border-radius:               6px;
-    background-color:            @selected;
+    background-color:          rgba(97, 175, 239, 0.2);
     text-color:                  @background;
-    size:                        24px;
+    size:                        38px;
 }
 
 element-text {
