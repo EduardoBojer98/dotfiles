@@ -19,7 +19,7 @@ window#waybar {
     margin: 0 4px;
 } */
 
-#custom-wofi-launcher,
+#custom-app-launcher,
 #custom-keyboard,
 #custom-notification,
 #custom-hypridle,
@@ -42,7 +42,7 @@ window#waybar {
     transition: background 0.2s ease, color 0.2s ease;
 }
 
-#custom-wofi-launcher:hover,
+#custom-app-launcher:hover,
 #custom-keyboard:hover,
 #custom-notification:hover,
 #custom-hypridle:hover,
@@ -70,7 +70,7 @@ window#waybar {
     border-radius: 0 10px 10px 0;
 }
 
-#custom-wofi-launcher {
+#custom-app-launcher {
     margin-left: 4px;
     border-radius: 10px 0 0 10px;
 

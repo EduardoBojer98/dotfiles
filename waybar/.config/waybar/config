@@ -1,9 +1,9 @@
 {
-  "layer": "top",
-  "position": "top",
+  "layer": "bottom",
+  "position": "bottom",
   "height": 32,
   "modules-left": [
-    "custom/wofi-launcher",
+    "custom/app-launcher",
     "hyprland/workspaces",
     "hyprland/window"
   ],
@@ -139,10 +139,10 @@
     "interval": 5,
     "restart-interval": 5
   },
-  "custom/wofi-launcher": {
+  "custom/app-launcher": {
     "format": " ",
     "tooltip": false,
-    "on-click": "wofi --show drun",
+    "on-click": "rofi -config ~/.config/rofi/config.rasi -show drun",
     "interval": 0
   },
   "pulseaudio": {
