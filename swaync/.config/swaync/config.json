@@ -33,7 +33,7 @@
     "notifications",
     "volume",
     "backlight",
-    "buttons-grid"
+    // "buttons-grid"
   ],
   "widget-config": {
     "title": {

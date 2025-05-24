@@ -59,7 +59,7 @@ data = {}
 
 city = "Zrenjanin"
 
-weather = requests.get("https://wttr.in/Zrenjanin?format=j1").json()
+weather = requests.get("https://wttr.in/zrenjanin?format=j1").json()
 
 
 def format_time(time):

@@ -2,22 +2,40 @@
 
 This repository contains my personal dotfiles for a minimal, performant, and cohesive Wayland setup using Hyprland.
 
+## To map the config files use
+**stow --target=$HOME --adopt [folder-name]**  
+
 ## Apps
 
-- **GNU Stow** – Manages symlinks for dotfiles across directories.
-- **wvkbd** – On-screen virtual keyboard for Wayland.
+### 🖥️ Compositor & Core Utilities
 - **Hyprland** – A dynamic tiling Wayland compositor.
 - **Hyprpaper** – Lightweight wallpaper daemon for Hyprland.
-- **Hyprlock** – Lock screen with blur and styling support.
-- **Hypridle** – Idle daemon for triggering actions (e.g., screen dimming, lock).
-- **Waybar** – Highly customizable status bar for Wayland.
-- **swaync** – Notification daemon compatible with Wayland.
-- **Wofi** – Application launcher for Wayland.
-- **Kitty** – GPU-accelerated terminal emulator.
-- **nwg-look** – Tool to apply GTK themes under Wayland.
-- **kvantum-qt5 / kvantum-qt6** – Enables custom theming for Qt5/Qt6 applications.
-- **kvantummanager** – GUI for managing Kvantum themes.
-- **hyprshot** – Simple screenshot utility for Hyprland.
+- **Hyprlock** – Lock screen utility with blur and styling support for Hyprland.
+- **Hypridle** – Idle daemon that triggers actions like screen dimming or locking.
+
+### 🧰 System Tools
+- **GNU Stow** – Manages symlinks for dotfiles across directories.
+- **kitty** – Fast, GPU-accelerated terminal emulator with modern features.
+- **flameshot** – Screenshot tool tailored for use with Hyprland.
+- **waypaper** – Wallpaper manager with GUI support for Wayland compositors.
+- **nwg-displays** – GUI tool for managing display configurations under Wayland.
+
+### 🎨 Theming & Appearance
+- **nwg-look** – GTK theme and icon manager for Wayland.
+- **kvantummanager** – GUI for managing and applying Kvantum (Qt) themes.
+- **eww** – Highly customizable widget system for Linux desktops, used for status panels, system info, etc.
+
+### 📟 Status Bars & Notifications
+- **Waybar** – Highly customizable status bar for Wayland compositors.
+- **swaync** – Notification daemon for Wayland, compatible with Hyprland and Sway.
+
+### 🚀 Launchers & Docks
+- **rofi** – Application launcher, clipboard, and more.
+- **nwg-dock-hyprland** – Minimal dock built for Hyprland using nwg-shell components.
+
+### ⌨️ Input
+- **wvkbd** – On-screen virtual keyboard for Wayland.
+
 
 ## Shell
 
