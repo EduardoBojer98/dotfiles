@@ -3,105 +3,117 @@
 # https://github.com/MartinGC94/MonitorConfig
 # Install-Module MonitorConfig
 
-# First ensure MonitorConfig is available and imported
+# ----------------------------------
+# CONFIGURATION
+# ----------------------------------
+# Short: Variables you can change to configure which monitor and inputs are used,
+#        and whether the script writes a log file.
+
+$EnableLogging = $true                         # Set to $false to disable log file creation
+$InstanceName  = 'DISPLAY\ACR09CA\5&1a47702c&0&UID265'
+$VCPCode       = 0x60                          # Input source VCP code
+$HDMI1         = 0x11
+$HDMI2         = 0x12
+$LogFile       = "$PSScriptRoot\HDMI_toggle_log.txt"
+
+# ----------------------------------
+# LOGGING FUNCTION
+# ----------------------------------
+# Short: Helper that prints messages to the console and optionally appends them to a log file.
+
+function Log-Message {
+    param([string]$Message)
+
+    $Timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    $Line = "$Timestamp - $Message"
+
+    # Always show in console
+    Write-Host $Line
+
+    # Only write to file if logging is enabled
+    if ($EnableLogging) {
+        Add-Content -Path $LogFile -Value $Line
+    }
+}
+
+# ----------------------------------
+# MODULE CHECK
+# ----------------------------------
+# Short: Ensure the required MonitorConfig module is installed and imported.
 if (-not (Get-Module -ListAvailable -Name MonitorConfig)) {
     Write-Host "MonitorConfig module not found. Installing..."
     Install-Module MonitorConfig -Force -Scope CurrentUser
 }
+
 Import-Module MonitorConfig -ErrorAction Stop
 
-# -----------------------------
-# CONFIGURATION
-# -----------------------------
-$monitorPath = "\\.\DISPLAY2"
-$instanceName = 'DISPLAY\ACR09CA\5&1a47702c&0&UID265'
-
-$vcpCode = 0x60          # VCP code for input source
-$hdmi1 = 0x11            # HDMI 1
-$hdmi2 = 0x12            # HDMI 2
-$logFile = "$PSScriptRoot\HDMI_toggle_log.txt"
-
-# -----------------------------
-# LOGGING FUNCTION
-# -----------------------------
-function Log-Message($message) {
-    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-    $line = "$timestamp - $message"
-    Write-Host $line
-    Add-Content -Path $logFile -Value $line
-}
-
-# -----------------------------
+# ----------------------------------
 # MAIN SCRIPT
-# -----------------------------
+# ----------------------------------
+# Short: The main flow — detects current input, decides which HDMI to switch to,
+#        sets display mode briefly for detection, and applies the new input.
 try {
-    # Set to extended display first for HDMI detection
+    Log-Message "Script started. Checking monitors..."
+
+    # Set extended display first for HDMI detection
     & "C:\Windows\System32\DisplaySwitch.exe" /extend
-    Start-Sleep -Seconds 2  # Give Windows time to apply the display change
+    Start-Sleep -Seconds 2
     
     # Get monitor object
-    $monitor = Get-Monitor | Where-Object InstanceName -eq $instanceName
-    if ($null -eq $monitor) {
-        Log-Message "ERROR: Monitor not found. Make sure the monitor is connected and the path is correct."
-        exit
-    }
-    
-    # Get current input
-    $response = Get-MonitorVCPResponse -Monitor $monitor -VCPCode $vcpCode
-
-    if ($null -eq $response) {
-        Log-Message "ERROR: Unable to read current input. Make sure DDC/CI is enabled on the monitor."
+    $Monitor = Get-Monitor | Where-Object InstanceName -eq $InstanceName
+    if ($null -eq $Monitor) {
+        Log-Message "ERROR: Monitor not found. Verify connection and instance name."
         exit
     }
 
-    # Extract numeric value
-    $currentInput = if ($response.PSObject.Properties.Match('CurrentValue')) { 
-        $response.CurrentValue 
-    }
-    else { 
-        [int]($response -replace '[^\d]', '') 
+    # Read current input source
+    $Response = Get-MonitorVCPResponse -Monitor $Monitor -VCPCode $VCPCode
+    if ($null -eq $Response) {
+        Log-Message "ERROR: Unable to read current input. Ensure DDC/CI is enabled."
+        exit
     }
 
-    Log-Message "Current input source: $currentInput"
+    # Extract numeric value safely
+    $CurrentInput = if ($Response.PSObject.Properties.Match('CurrentValue')) {
+        $Response.CurrentValue
+    } else {
+        [int]($Response -replace '[^\d]', '')
+    }
 
-    # Decide which HDMI to switch to
-    switch ($currentInput) {
-        $hdmi1 {
-            $newInput = $hdmi2
+    Log-Message "Current input source: $CurrentInput"
+
+    # ----------------------------------
+    # SWITCH LOGIC
+    # ----------------------------------
+    switch ($CurrentInput) {
+        $HDMI1 {
+            $NewInput = $HDMI2
             Log-Message "Switching to HDMI 2..."
-            # Set display to internal only
             & "C:\Windows\System32\DisplaySwitch.exe" /internal
-            Log-Message "Display mode set to internal only"
-            Start-Sleep -Seconds 2  # Give Windows time to apply the display change
+            Log-Message "Display mode set to internal only."
+            Start-Sleep -Seconds 2
         }
-        $hdmi2 {
+        $HDMI2 {
+            $NewInput = $HDMI1
             Log-Message "Switching to HDMI 1..."
-            # First set display to extended mode
             & "C:\Windows\System32\DisplaySwitch.exe" /extend
-            Log-Message "Display mode set to extended"
-            Start-Sleep -Seconds 2  # Give Windows time to apply the display change
-            
-            # Now set the input to HDMI 1
-            $newInput = $hdmi1
+            Log-Message "Display mode set to extended."
+            Start-Sleep -Seconds 2
         }
         default {
-            # If some other input, switch to HDMI1 by default
-            Log-Message "Unknown input detected. Switching to HDMI 1..."
-            # First set display to extended
+            $NewInput = $HDMI1
+            Log-Message "Unknown input detected. Defaulting to HDMI 1..."
             & "C:\Windows\System32\DisplaySwitch.exe" /extend
-            Log-Message "Display mode set to extended"
-            Start-Sleep -Seconds 2  # Give Windows time to apply the display change
-            
-            # Now set the input to HDMI 1
-            $newInput = $hdmi1
+            Log-Message "Display mode set to extended."
+            Start-Sleep -Seconds 2
         }
     }
 
-    # Apply new input
-    Set-MonitorVCPValue -Monitor $monitor -VCPCode $vcpCode -Value $newInput
-    Log-Message "Input source changed successfully to $newInput."
+    # Apply the new input source
+    Set-MonitorVCPValue -Monitor $Monitor -VCPCode $VCPCode -Value $NewInput
+    Log-Message "Input source successfully changed to $NewInput."
+    Log-Message "Script finished successfully."
 
-}
-catch {
-    Log-Message "ERROR: $_"
+} catch {
+    Log-Message "ERROR: $($_.Exception.Message)"
 }
