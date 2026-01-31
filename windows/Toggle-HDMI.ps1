@@ -9,7 +9,7 @@
 # Short: Variables you can change to configure which monitor and inputs are used,
 #        and whether the script writes a log file.
 
-$EnableLogging = $true                         # Set to $false to disable log file creation
+$EnableLogging = $false                         # Set to $false to disable log file creation
 $InstanceName  = 'DISPLAY\ACR09CA\5&1a47702c&0&UID265'
 $VCPCode       = 0x60                          # Input source VCP code
 $HDMI1         = 0x11

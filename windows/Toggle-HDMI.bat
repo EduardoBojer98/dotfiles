@@ -25,5 +25,5 @@ REM   - This batch file pauses after running so you can read any output or
 REM     error messages from the PowerShell script.
 REM ------------------------------------------------------------
 
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "C:\Users\User\Desktop\Toggle-HDMI.ps1"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "C:\Users\eugen\Desktop\Toggle-HDMI.ps1"
 pause
